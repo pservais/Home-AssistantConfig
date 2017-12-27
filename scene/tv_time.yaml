@@ -1,4 +1,4 @@
-- name: TV Time
+- name: Film tijd
   entities:
        light.M1_front_left:
            state: off

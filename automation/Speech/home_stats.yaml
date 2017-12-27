@@ -6,7 +6,7 @@
   trigger:
     - platform: state
       entity_id:
-        - group.family
+        - group.familie
       from: 'not_home'
       to: 'home'
       for: '00:03:00'

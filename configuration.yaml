@@ -57,6 +57,10 @@ updater:
 
 sun:
 
+weather:
+  - platform: buienradar
+    forecast: True
+
 light:
   - platform: limitlessled
     bridges:
@@ -177,13 +181,13 @@ tts:
     voice: Ruben
 #    cache_dir: /data/tts
 
-# cover:
-#   platform: opengarage
-#   covers:
-#       garage:
-#         host:  192.168.2.29
-#         device_key: secret
-#         name:  Garagepoort
+cover:
+  platform: opengarage
+  covers:
+      garage:
+        host:  192.168.2.29
+        device_key: !secret opengarage_key
+        name:  Garagepoort
 
 group: !include_dir_merge_named group
 device_tracker: !include_dir_merge_list device_tracker

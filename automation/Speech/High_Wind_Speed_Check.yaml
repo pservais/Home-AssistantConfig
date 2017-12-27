@@ -12,7 +12,7 @@
   action:
     - service: script.notify_engine
       data_template:
-        value1: 'VERY HIGH WINDS:'
+        value1: 'WIND WAARSCHUWING:'
         value2: "{{ states('sensor.dark_sky_wind_speed')}}"
         value3: ' '
 
@@ -22,16 +22,8 @@
     - service: script.speech_engine
       data_template:
         value1: >
-          "ATTENTION: The wind speed is now {{ states('sensor.dark_sky_wind_speed')|round}} miles per hour.  Please make sure everyone is inside for safety."
+          "ATTENTIE: De windsnelheid is nu {{ states('sensor.dark_sky_wind_speed')|round}} kilometer per uur.  Is iedereen veilig binnen?"
         call_window_check: 1
         call_garage_check: 1
 
     - service: script.emergency
-
-    - service: script.tweet_engine
-      data_template:
-        tweet: >
-          {{ [
-          "Wind speed is {{ states('sensor.dark_sky_wind_speed')|round}} miles per hour.  For safety, I'm going to close the @garadget doors.",
-          "Getting pretty windy! {{ states('sensor.dark_sky_wind_speed')|round}}MPH. Time to ask @Garadget to close the garage doors."
-          ] | random + "(http://amzn.to/2jQLpVQ)"}}

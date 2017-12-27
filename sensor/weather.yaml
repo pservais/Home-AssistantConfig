@@ -18,14 +18,23 @@
 #    - ozone
     - uv_index
 
-- platform: nest
+- platform: buienradar
   monitored_conditions:
-#     - 'temperature'
-#     - 'target'
-     - 'humidity'
-#     - 'operation_mode'
-#     - 'last_connection'
-#     - 'co_status'
-#     - 'smoke_status'
+    - symbol
+    - humidity
+    - temperature
+    - groundtemperature
+    - windspeed
+    - windforce
+    - winddirection
+    - windazimuth
+    - pressure
+    - visibility
+    - windgust
+    - precipitation
+    - irradiance
+    - precipitation_forecast_average
+    - precipitation_forecast_total
+
 
 - platform: moon

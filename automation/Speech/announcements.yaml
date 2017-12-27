@@ -7,10 +7,8 @@
   trigger:
     - platform: state
       entity_id:
-        - device_tracker.carlo
-        - device_tracker.stacey
-        - device_tracker.franco
-        - device_tracker.yolanda
+        - device_tracker.patrick
+        - device_tracker.nicole
       from: 'not_home'
       to: 'home'
       for: '00:02:00'
@@ -22,16 +20,9 @@
           {% set person = trigger.entity_id.split('.')[1]|replace('_', ' ')%}
           {%- macro greeting_sentence(person) -%}
           {{ [
-          "Welcome back home " ~ person,
-          "Guess who is home?" ~ person +" is!",
-          person + " is now in the house.",
-          "Welcome Home " ~ person + ".  We have missed you. Or at least Molly did.",
-          "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
-          "Life is like a song, you’re back where you belong. Welcome home " ~ person,
-          "Hey there " ~ person + " Welcome Home!",
-          "Knock Knock. Who is There? "   ~ person +" is!",
-          person ~ "! You are home!",
-          "I know a secret! "  ~ person +" is home!"
+          "Welkom thuis " ~ person,
+          "Raad eens wie er thuis is? Het is " ~ person +" !",
+          person + " is thuis."
           ] | random }}
           {%- endmacro -%}
           {{greeting_sentence(person)}}

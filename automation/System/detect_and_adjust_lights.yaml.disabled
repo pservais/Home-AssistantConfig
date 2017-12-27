@@ -9,7 +9,7 @@
 
   condition:
     - condition: state
-      entity_id: group.family
+      entity_id: group.familie
       state: 'home'
     - condition: state
       entity_id: input_boolean.alert_mode

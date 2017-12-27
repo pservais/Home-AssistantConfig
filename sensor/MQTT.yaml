@@ -2,10 +2,134 @@
 ## Various MQTT sensors
 ###################################################
 
-- platform: mqtt
-  state_topic: "ifttt/rachio/watering_time"
-  name: "Rachio_watering_time"
+      ##########################################################
+      ## Verwarming
+      ##########################################################
 
 - platform: mqtt
-  state_topic: "dash/medicine/medicine_time"
-  name: "Medicine time"
+  state_topic: 'events/central_heating/otmonitor/roomtemperature'
+  name: 'Woonkamer'
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/boilerwatertemperature'
+  name: 'Boiler'
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/modulation'
+  name: 'Modulatie niveau'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/setpoint'
+  name: 'Gewenste temperatuur'
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/fault'
+  name: 'OTGW fout'
+  payload_on: "true"
+  payload_off: "false"
+  sensor_class: connectivity
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/centralheating'
+  name: 'CV actief'
+  payload_on: "true"
+  payload_off: "false"
+  sensor_class: heat
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/hotwater'
+  name: 'Warm water actief'
+  payload_on: "true"
+  payload_off: "false"
+  sensor_class: moisture
+  value_template: '{{ value_json.value }}'
+
+- platform: mqtt
+  state_topic: 'events/central_heating/otmonitor/flame'
+  name: 'Brander ketel'
+  payload_on: "true"
+  payload_off: "false"
+  sensor_class: heat
+  value_template: '{{ value_json.value }}'
+
+
+      ##########################################################
+      ## MySensors
+      ##########################################################
+
+- platform: mqtt
+  state_topic: "mysensors1-out/10/0/1/0/0"
+  name: "Vriezer bijkeuken"
+  unit_of_measurement: '°C'
+
+- platform: mqtt
+  state_topic: "mysensors1-out/10/1/1/0/0"
+  name: "Koelkast bijkeuken"
+  unit_of_measurement: '°C'
+
+- platform: mqtt
+  state_topic: "mysensors1-out/2/0/1/0/0"
+  name: "Slaapkamer Colin"
+  unit_of_measurement: '°C'
+
+- platform: mqtt
+  state_topic: "mysensors1-out/1/0/1/0/0"
+  name: "Slaapkamer"
+  unit_of_measurement: '°C'
+
+- platform: mqtt
+  state_topic: "mysensors1-out/3/0/1/0/0"
+  name: "Keuken"
+  unit_of_measurement: '°C'
+
+- platform: mqtt
+  state_topic: 'mysensors1-out/10/3/1/0/16'
+  name: 'Deur koelkast bijkeuken'
+  payload_on: "1"
+  payload_off: "0"
+  sensor_class: opening
+
+- platform: mqtt
+  state_topic: 'mysensors1-out/10/2/1/0/16'
+  name: 'Deur vriezer bijkeuken'
+  payload_on: "1"
+  payload_off: "0"
+  sensor_class: opening
+
+
+      ##########################################################
+      ## Multisensors
+      ##########################################################
+
+- platform: mqtt
+  state_topic: "multisensor/bijkeuken"
+  name: "MS1 Luchtvochtigheid"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.humidity | round(1) }}'
+
+- platform: mqtt
+  state_topic: "multisensor/bijkeuken"
+  name: "MS1 Lichtsterkte"
+  unit_of_measurement: "LUX"
+  value_template: '{{ value_json.ldr }}'
+
+- platform: mqtt
+  state_topic: "multisensor/bijkeuken"
+  name: "MS1 Beweging"
+  value_template: '{{ value_json.motion }}'
+
+- platform: mqtt
+  state_topic: "multisensor/bijkeuken"
+  name: "MS1 Temperatuur"
+  unit_of_measurement: "°C"
+  value_template: '{{ value_json.temperature | round(1) }}'

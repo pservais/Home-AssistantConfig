@@ -1,5 +1,5 @@
 guest_mode:
-  name: Guest Mode
+  name: Gast Mode
   icon: mdi:account-alert
   initial: off
 
@@ -14,6 +14,6 @@ alert_mode:
   initial: off
 
 speech_notifications:
-  name: Speech Notifications
+  name: Spraak berichten
   icon: mdi:speaker-wireless
   initial: on

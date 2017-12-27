@@ -1,0 +1,38 @@
+######################################################################
+##  Awesome [Etekcity Outlets](http://amzn.to/2efNoBP) control via RF
+### connected to
+## [433Mhz Transmitter and receiver](http://amzn.to/2dceNY2)
+######################################################################
+- platform: rfxtrx
+  automatic_add: False
+  devices:
+    0b11000000e0ded20c010f70:
+      name: Deurbel knop
+      fire_event: True
+    0b11000649bc0cfe06010f70:
+      name: Deurbel bel
+      fire_event: True
+    0b11000000469d520a000070:
+      name: Schemerschakelaar
+    0b11000002d7880002000060:
+      name: Schakelmodule 1
+    0b11000202d7880003000060:
+      name: Schakelmodule 2
+    0b11000602d7880004000070:
+      name: Schakelmodule 3
+
+- platform: mqtt
+  name: "Spotjes voordeur"
+  state_topic: "stat/sonoff/luifel/POWER"
+  command_topic: "cmnd/sonoff/luifel/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: wake_on_lan
+  mac_address: "40-16-7E-B4-1A-EB"
+  name: "Mediaserver"
+  host: "192.168.2.4"
+  turn_off:
+    service: shell_command.turn_off_mediaserver

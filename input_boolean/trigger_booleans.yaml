@@ -1,32 +1,20 @@
 #triggers
 good_night:
-  name: Good Night
+  name: Weltrusten
   initial: off
 
 good_morning:
-  name: Good Morning
-  initial: off
-
-meal_time:
-  name: Meal Time
+  name: Goeiemorgen
   initial: off
 
 tv_time:
-  name: TV Time
+  name: Film Tijd
   initial: off
 
 work:
-  name: Work
+  name: Werk
   initial: off
 
 flash:
-  name: Flash
-  initial: off
-
-color_tornado:
-  name: Color Tornado!
-  initial: off
-
-guard_dog:
-  name: Guard Dog
+  name: Flitsen
   initial: off
